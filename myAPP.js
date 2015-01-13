@@ -27,7 +27,7 @@ myAPP.Accordion.prototype = {
 
 myAPP.AccordionPanel = function ( el, panelHolder ) {
     /* 
-    The AccordionPanel Class controls each of the collapsable panels. Thiese are spawned from Accordion Class.
+    The AccordionPanel Class controls each of the collapsable panels. These are spawned from Accordion Class.
     
     It's 2 methods are:
     1) select () - addClass('active') to this.el ('.accordion__panel') and set this.isSelected=true;
@@ -74,6 +74,15 @@ myAPP.AccordionPanel.prototype = {
 
 myAPP.init = function () {
 
+    /*
+    Turn all elements with class '.accordion__panel' into AccordianPanel Class intances. 
+
+    Each heading when clicked ('.accordion__panel__heading'), will hide all accordion content 
+    elements ('.accordion__panel__content').
+    Then will expand or contract it's sibling accordion content element ('.accordion__panel__content') 
+    depending on it's isSelected value.
+    */
+    
     var accordionPanels = document.querySelectorAll('.accordion__panel'), 
         i = 0;
 
