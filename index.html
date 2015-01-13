@@ -52,8 +52,15 @@
 var myAPP = myAPP || {};
 
 myAPP.Accordion = function () {
+    /* 
+    The Accordion Class is a container for each of the AccordionPanel Class panels.
+    
+    It's 2 methods are:
+    1) resetPanels () - used for unselecting/collapsing every AccordionPanel
+    2) makePanel ( panelElement<HTMLElement>  )  - used for spawning new instances of AccordionPanel
+
+    */
     this.panels = [];
-    //return this;
 };
 
 myAPP.Accordion.prototype = {
@@ -69,12 +76,21 @@ myAPP.Accordion.prototype = {
 };
 
 myAPP.AccordionPanel = function ( el, panelHolder ) {
+    /* 
+    The AccordionPanel Class controls each of the collapsable panels. Thiese are spawned from Accordion Class.
+    
+    It's 2 methods are:
+    1) select () - addClass('active') to this.el ('.accordion__panel') and set this.isSelected=true;
+    2) unselect ()  - removeClass('active') from this.el ('.accordion__panel') and set this.isSelected=false;
+    */
 
     var self = this;
 
     this.el = el;
     this.isSelected = false;
     this.panelHolder = panelHolder;
+
+    //  I N I T I A L I Z E   T H I S   I N S T A N C E
 
     if ( this.panelHolder.panels.length === 0 ){ // select the first panel by default
         this.select();
