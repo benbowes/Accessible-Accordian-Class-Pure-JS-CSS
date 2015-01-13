@@ -2,55 +2,9 @@
 var myAPP = myAPP || {};
 
 /* 
+@Author: Ben Bowes - bb@benbowes.com
 
-# Simple-Accordion-Class-Pure-JS
-
-A pure JS OOP accordion with CSS transitions
-
-View a demo here: http://polyform.com.au/Simple-Accordian-Class-Pure-JS/
-
-=======
-
-
-This accordion consists of a container ('.accordion') for holding a series of 
-collapsible panels ('.accordion__panel')
-
-Works in IE9+
-
-Accordian rules:
-- Panels open and close via a click event on the panel.
-- Only one panel can be open at a time.
-- All panels can be closed at the same time.
-- Transitions open in IE10+ and modern browsers
-
------------------------------------
-HTML Layout:
-```
-<div class="accordion">
-    <section class="accordion__panel">
-        <a class="accordion__panel__heading" href="javascript:;">Accordion Panel One</a>
-        <article class="accordion__panel__content">
-            ...
-        </article>
-    </section>
-    <section class="accordion__panel">
-        <a class="accordion__panel__heading" href="javascript:;">Accordion Panel One</a>
-        <article class="accordion__panel__content">
-            ...
-        </article>
-    </section>
-</div>
-```
------------------------------------
-
-Rough HTML translation:
-```
-Accordion
-    AccordionPanel
-        AccordionPanel's heading
-        AccordionPanel's collapsing content area
-``` 
-
+See the readme for more info
 */
 
 myAPP.Accordion = function ( panelSelector ) { // e.g. function (".panel")
@@ -109,13 +63,13 @@ myAPP.AccordionPanel.prototype = {
 
 myAPP.init = function () {
 
-    // Create Accordian instance and turn all elements with class '.accordion__panel' into AccordianPanel Class intances. 
+    // Create Accordian instance and turn all elements with class '.accordion-panel' into AccordianPanel Class intances. 
 
     var accordionPanels,
         i,
         self = this;
 
-    this.accordionContainer = new myAPP.Accordion('.accordion__panel'); //  send the panel selector to Accordian.panelSelector
+    this.accordionContainer = new myAPP.Accordion('.accordion-panel'); //  send the panel selector to Accordian.panelSelector
 
     accordionPanels = document.querySelectorAll(this.accordionContainer.panelSelector); 
 

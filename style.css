@@ -17,15 +17,15 @@ p{margin: 0 0 10px 0;}
 	overflow: hidden;
 	border: 3px solid #6495ED;
 }
-.accordion__panel{
+.accordion-panel{
 	border: 0px #6495ED solid;
 	transition: all .6s .2s ease; 
 }
-.accordion__panel.active{
+.accordion-panel.active{
 	transition: all .2s .6s;
 	border-left: 15px #6495ED solid;
 }
-.accordion__panel__heading{
+.accordion-panel__heading{
 	padding: 20px;
 	display: block;
 	text-decoration: none;
@@ -40,25 +40,25 @@ p{margin: 0 0 10px 0;}
 	transition: all .6s;
 	cursor:pointer;
 }
-.accordion__panel__heading:HOVER{
+.accordion-panel__heading:HOVER{
 	color: #333;
 	background: #f1f1f1;
 	transition: all .2s;
 }
-.active .accordion__panel__heading:HOVER,
-.active .accordion__panel__heading{
+.active .accordion-panel__heading:HOVER,
+.active .accordion-panel__heading{
 	color: #333;
 	background: #fff;
 	border-bottom: 0;
 }
-.accordion__panel__content{
+.accordion-panel__content{
 	padding: 0 20px 0 20px;
 	background: #f1f1f1;
     max-height: 0;
     overflow: hidden;
     transition: all .6s;
 }
-.active .accordion__panel__content{
+.active .accordion-panel__content{
     max-height: 500px;
     padding: 0 20px 20px 20px;
     background: #fff;
