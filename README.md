@@ -1,6 +1,6 @@
-# Simple-Accordian-Class-Pure-JS
+# Simple-Accordion-Class-Pure-JS
 
-A pure JS OOP accordian with CSS transitions
+A pure JS OOP accordion with CSS transitions
 
 View a demo here: http://polyform.com.au/Simple-Accordian-Class-Pure-JS/
 
@@ -9,9 +9,8 @@ View a demo here: http://polyform.com.au/Simple-Accordian-Class-Pure-JS/
 
 
 This accordion consists of a container ('.accordion') for holding a series of 
-collapsable panels ('.accordion__panel')
+collapsible panels ('.accordion__panel')
 Works in IE9+
------------------------------------
 
 Accordian rules:
 - Panels open and close via a click event on a heading.
