@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Accordion</title>
+
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+
+<div class="accordion">
+
+    <section class="accordion__panel">
+        <a class="accordion__panel__heading" href="javascript:;">Accordion Panel One</a>
+        <article class="accordion__panel__content">
+            <h4>Potenti ligula torquent</h4>
+            <p>Diam adipiscing eu vestibulum condimentum et gravida lacus parturient dignissim proin habitasse adipiscing torquent netus blandit vestibulum semper porttitor velit habitant pretium pharetra fusce inceptos quam quam metus.Potenti ligula torquent vestibulum cum sem blandit a eu et vestibulum aliquet.</p>
+        </article>
+    </section>
+
+    <section class="accordion__panel">
+        <a class="accordion__panel__heading" href="javascript:;">Accordion Panel Two</a>
+        <article class="accordion__panel__content">
+            <p>Diam adipiscing eu vestibulum condimentum et gravida lacus parturient dignissim proin habitasse adipiscing torquent netus blandit vestibulum semper porttitor velit habitant pretium pharetra fusce inceptos quam quam metus.Potenti ligula torquent vestibulum cum sem blandit a eu et vestibulum aliquet.</p>
+        </article>
+    </section>
+
+    <section class="accordion__panel">
+        <a class="accordion__panel__heading" href="javascript:;">Accordion Panel Three</a>
+        <article class="accordion__panel__content">
+            <p>Lacus parturient dignissim proin habitasse adipiscing torquent netus blandit vestibulum semper porttitor velit habitant pretium pharetra fusce inceptos quam quam metus. Potenti ligula torquent vestibulum cum sem blandit a eu et vestibulum aliquet.</p>
+        </article>
+    </section>
+
+    <section class="accordion__panel">
+        <a class="accordion__panel__heading" href="javascript:;">Accordion Panel Four</a>
+        <article class="accordion__panel__content">
+            <p>Potenti ligula torquent vestibulum cum sem blandit a eu et vestibulum aliquet. Lacus parturient dignissim proin habitasse adipiscing torquent netus blandit vestibulum semper porttitor velit habitant pretium pharetra fusce inceptos quam quam metus. Potenti ligula torquent vestibulum cum sem blandit a eu et vestibulum aliquet.</p>
+        </article>
+    </section>
+
+</div>
+
+<script>
+
+
+
+
+var myAPP = myAPP || {};
+
+myAPP.Accordion = function () {
+    this.panels = [];
+    //return this;
+};
+
+myAPP.Accordion.prototype = {
+
+    resetPanels: function () {
+        this.panels.forEach( function ( v ) {
+            v.unselect();
+        });
+    },
+    makePanel: function ( panelElement ) {
+        this.panels.push( new myAPP.AccordionPanel(panelElement, this) );
+    }
+};
+
+myAPP.AccordionPanel = function ( el, panelHolder ) {
+
+    var self = this;
+
+    this.el = el;
+    this.isSelected = false;
+    this.panelHolder = panelHolder;
+
+    if ( this.panelHolder.panels.length === 0 ){ // select the first panel by default
+        this.select();
+    }
+
+    this.el.addEventListener("click", function () {
+        
+        if ( self.isSelected ){
+            self.unselect(); // already open, presume user wants it closed
+        } else {
+            self.panelHolder.resetPanels(); // close all panels
+            self.select(); // then open desired panel
+        }
+
+    });
+
+    return this;
+};
+
+myAPP.AccordionPanel.prototype = {
+
+    select: function () {
+        this.el.addClass('active');
+        this.isSelected = true;
+    },
+    unselect: function () {
+        this.el.removeClass('active');
+        this.isSelected = false;
+    }
+};
+
+myAPP.init = function () {
+
+    var accordionPanels = document.querySelectorAll('.accordion__panel'), 
+        i = 0;
+
+    myAPP.accordionContainer = new myAPP.Accordion();
+
+    for (i; i < accordionPanels.length; i++) {
+        myAPP.accordionContainer.makePanel(accordionPanels[i]);
+    }
+
+};
+
+window.onload = function () {
+    myAPP.init();
+};
+
+
+
+/* ------------------------------------------------
+
+    C o n v e n i e n c e    M e t h o d s
+
+------------------------------------------------ */
+
+HTMLElement.prototype.addClass = function( className ){
+    // e.g. el.addClass( 'className' ); 
+    if (this.classList){
+        this.classList.add(className);
+    }else{
+        this.className += ' ' + className;
+    }
+}
+
+HTMLElement.prototype.removeClass = function( className ){
+    // e.g. el.removeClass( 'className' ); 
+    if (this.classList){
+      this.classList.remove(className);
+    }else{
+      this.className = this.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+    }
+}
+
+
+</script>
+
+</body>
+</html>
