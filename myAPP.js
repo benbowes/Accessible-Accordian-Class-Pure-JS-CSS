@@ -3,55 +3,59 @@ var myAPP = myAPP || {};
 
 /* 
 
-    This accordion consists of a container ('.accordion') for holding a series of 
-    collapsable panels ('.accordion__panel')
-    Works in IE9+
+# Simple-Accordion-Class-Pure-JS
 
-    -----------------------------------
-    
-    Accordian rules:
+A pure JS OOP accordion with CSS transitions
 
-    - Panels open and close via a click event on a heading.
-    - Only one panel can be open at a time.
-    - All panels can be closed.
-    - Transitions open in IE10+ and modern browsers
-    
-    -----------------------------------
+View a demo here: http://polyform.com.au/Simple-Accordian-Class-Pure-JS/
 
-    HTML Layout:
+=======
 
-    <div class="accordion">
 
-        <section class="accordion__panel">
-            <a class="accordion__panel__heading" href="javascript:;">Accordion Panel One</a>
-            <article class="accordion__panel__content">
-                ...
-            </article>
-        </section>
+This accordion consists of a container ('.accordion') for holding a series of 
+collapsible panels ('.accordion__panel')
 
-        <section class="accordion__panel">
-            <a class="accordion__panel__heading" href="javascript:;">Accordion Panel One</a>
-            <article class="accordion__panel__content">
-                ...
-            </article>
-        </section>
+Works in IE9+
 
-    </div>
+Accordian rules:
+- Panels open and close via a click event on a heading.
+- Only one panel can be open at a time.
+- All panels can be closed at the same time.
+- Transitions open in IE10+ and modern browsers
 
-    -----------------------------------
-    
-    Rough HTML translation:
+-----------------------------------
+HTML Layout:
+```
+<div class="accordion">
+    <section class="accordion__panel">
+        <a class="accordion__panel__heading" href="javascript:;">Accordion Panel One</a>
+        <article class="accordion__panel__content">
+            ...
+        </article>
+    </section>
+    <section class="accordion__panel">
+        <a class="accordion__panel__heading" href="javascript:;">Accordion Panel One</a>
+        <article class="accordion__panel__content">
+            ...
+        </article>
+    </section>
+</div>
+```
+-----------------------------------
 
-    ('.accordion') = Accordion
-        ('.accordion__panel') = AccordionPanel
-            ('.accordion__panel__heading') = AccordionPanel's heading
-            ('.accordion__panel__content') = AccordionPanel's collapsing area
-
+Rough HTML translation:
+```
+Accordion
+    AccordionPanel
+        AccordionPanel's heading
+        AccordionPanel's collapsing content area
+``` 
 
 */
 
-myAPP.Accordion = function () {
+myAPP.Accordion = function ( panelSelector ) { // e.g. function (".panel")
     this.panels = []; // Master list of collapsable panels. Accessible publically e.g myAPP.accordionContainer.panels[0].select();
+    this.panelSelector = panelSelector; 
 };
 
 myAPP.Accordion.prototype = {
@@ -107,11 +111,13 @@ myAPP.init = function () {
 
     // Create Accordian instance and turn all elements with class '.accordion__panel' into AccordianPanel Class intances. 
 
-    var accordionPanels = document.querySelectorAll('.accordion__panel'), 
+    var accordionPanels,
         i,
         self = this;
 
-    this.accordionContainer = new myAPP.Accordion();
+    this.accordionContainer = new myAPP.Accordion('.accordion__panel'); //  send the panel selector to Accordian.panelSelector
+
+    accordionPanels = document.querySelectorAll(this.accordionContainer.panelSelector); 
 
     for (i = 0; i < accordionPanels.length; i++) {
         self.accordionContainer.makePanel(accordionPanels[i]);
