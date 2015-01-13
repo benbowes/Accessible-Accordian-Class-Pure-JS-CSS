@@ -7,7 +7,7 @@ View a demo here: http://polyform.com.au/Simple-Accordian-Class-Pure-JS/
 =======
 
 This accordion consists of a container ('.accordion') for holding a series of 
-collapsible panels ('.accordion__panel')
+collapsible panels ('.accordion-panel')
 
 Works in IE9+
 
@@ -20,20 +20,23 @@ Accordian rules:
 -----------------------------------
 HTML Layout:
 ```
-<div class="accordion">
-    <section class="accordion__panel">
-        <a class="accordion__panel__heading" href="javascript:;">Accordion Panel One</a>
-        <article class="accordion__panel__content">
+<section class="accordion">
+
+    <article class="accordion-panel">
+        <a class="accordion-panel__heading" href="javascript:;">Accordion Panel One</a>
+        <div class="accordion-panel__content">
             ...
-        </article>
-    </section>
-    <section class="accordion__panel">
-        <a class="accordion__panel__heading" href="javascript:;">Accordion Panel One</a>
-        <article class="accordion__panel__content">
+        </div>
+    </article>
+
+    <article class="accordion-panel">
+        <a class="accordion-panel__heading" href="javascript:;">Accordion Panel Two</a>
+        <div class="accordion-panel__content">
             ...
-        </article>
-    </section>
-</div>
+        </div>
+    </article>
+    
+</section>
 ```
 -----------------------------------
 

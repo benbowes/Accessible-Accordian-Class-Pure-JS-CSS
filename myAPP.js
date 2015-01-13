@@ -1,10 +1,12 @@
 
 var myAPP = myAPP || {};
 
-/* 
+/*  
+
+See the README for more info
+
 @Author: Ben Bowes - bb@benbowes.com
 
-See the readme for more info
 */
 
 myAPP.Accordion = function ( panelSelector ) { // e.g. function (".panel")
@@ -20,9 +22,9 @@ myAPP.Accordion.prototype = {
             v.unselect();
         });
     },
-    // makePanel(<HTMLElement>) - Spawns a new AccordionPanel and pushes it into the master list of AccordionPanels controlled by Accordian
+    // makePanel( <HTMLElement> ) - Spawns a new AccordionPanel and pushes it into the master list of AccordionPanels controlled by Accordian
     makePanel: function ( panelElement ) {
-        this.panels.push( new myAPP.AccordionPanel(panelElement, this) );
+        this.panels.push( new myAPP.AccordionPanel( panelElement, this ) );
     }
 };
 
@@ -35,11 +37,12 @@ myAPP.AccordionPanel = function ( el, panelHolder ) {
     this.isSelected = false;
     this.panelHolder = panelHolder;
 
-    this.el.addEventListener("click", function () {
+    this.el.addEventListener( "click", function () {
         
         if (self.isSelected){
             self.unselect(); // already open, presume user wants it closed
-        } else {
+        }
+        else {
             self.panelHolder.resetPanels(); // close all panels
             self.select(); // then open desired panel
         }
@@ -69,12 +72,12 @@ myAPP.init = function () {
         i,
         self = this;
 
-    this.accordionContainer = new myAPP.Accordion('.accordion-panel'); //  send the panel selector to Accordian.panelSelector
+    this.accordionContainer = new myAPP.Accordion( '.accordion-panel' ); //  send the panel selector to Accordian.panelSelector
 
-    accordionPanels = document.querySelectorAll(this.accordionContainer.panelSelector); 
+    accordionPanels = document.querySelectorAll( this.accordionContainer.panelSelector ); 
 
     for (i = 0; i < accordionPanels.length; i++) {
-        self.accordionContainer.makePanel(accordionPanels[i]);
+        self.accordionContainer.makePanel( accordionPanels[i] );
     }
 
     // select second panel
@@ -93,10 +96,10 @@ window.onload = function () {
 
 ------------------------------------------------ */
 
-HTMLElement.prototype.addClass = function (className) {
+HTMLElement.prototype.addClass = function ( className ) {
     // e.g. el.addClass( 'className' ); 
     if (this.classList){
-        this.classList.add(className);
+        this.classList.add( className );
     }else{
         this.className += ' ' + className;
     }
