@@ -1,2 +1,2 @@
 # Simple-Accordian-Class-Pure-JS
-A pure JS CSS accordian
+A pure JS OOP accordian with CSS transitions
