@@ -18,7 +18,7 @@ collapsible panels ('.accordion__panel')
 Works in IE9+
 
 Accordian rules:
-- Panels open and close via a click event on a heading.
+- Panels open and close via a click event on the panel.
 - Only one panel can be open at a time.
 - All panels can be closed at the same time.
 - Transitions open in IE10+ and modern browsers
