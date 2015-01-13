@@ -1,17 +1,15 @@
 
 var myAPP = myAPP || {};
 
-/*  
-
-See the README for more info
-
+/*
+See the README.md for more info
 @Author: Ben Bowes - bb@benbowes.com
-
 */
 
-myAPP.Accordion = function ( panelSelector ) { // e.g. function (".panel")
+myAPP.Accordion = function ( panelSelectorsObj, makeAccessible ) { // e.g. function (".panel")
     this.panels = []; // Master list of collapsable panels. Accessible publically e.g myAPP.accordionContainer.panels[0].select();
-    this.panelSelector = panelSelector; 
+    this.panelSelectors = panelSelectorsObj; // an obj containing the panel selectors - { panel: <String>, heading: <String>, content: <String>}
+    this.makeAccessible = makeAccessible != false; // true|false
 };
 
 myAPP.Accordion.prototype = {
@@ -24,13 +22,13 @@ myAPP.Accordion.prototype = {
     },
     // makePanel( <HTMLElement> ) - Spawns a new AccordionPanel and pushes it into the master list of AccordionPanels controlled by Accordian
     makePanel: function ( panelElement ) {
-        this.panels.push( new myAPP.AccordionPanel( panelElement, this ) );
+        var panel = new myAPP.AccordionPanel( panelElement, this );
+        this.panels.push( panel );
     }
 };
 
 myAPP.AccordionPanel = function ( el, panelHolder ) {
-    // The AccordionPanel Class controls each of the collapsable panels spawned from Accordion Class.
-
+    // The AccordionPanel Class controls each of the collapsable panels spawned from Accordion Class
     var self = this;
 
     this.el = el;
@@ -64,17 +62,28 @@ myAPP.AccordionPanel.prototype = {
     }
 };
 
+myAPP.AccordianPanelAccesibility = function () {
+
+}
+
+myAPP.AccordianPanelAccesibility.prototype = {
+
+}
+
 myAPP.init = function () {
 
     // Create Accordian instance and turn all elements with class '.accordion-panel' into AccordianPanel Class intances. 
-
     var accordionPanels,
         i,
         self = this;
 
-    this.accordionContainer = new myAPP.Accordion( '.accordion-panel' ); //  send the panel selector to Accordian.panelSelector
+    this.accordionContainer = new myAPP.Accordion({
+        panel:      '.accordion-panel',
+        heading:    '.accordion-panel__heading',
+        content:    '.accordion-panel__content'
+    }, true); //  store the panel selectors in Accordian Class - Accordion( { panel: <String>, heading: <String>, content: <String>}, makeAccessible<Boolean> )
 
-    accordionPanels = document.querySelectorAll( this.accordionContainer.panelSelector ); 
+    accordionPanels = document.querySelectorAll( this.accordionContainer.panelSelectors['panel'] ); 
 
     for (i = 0; i < accordionPanels.length; i++) {
         self.accordionContainer.makePanel( accordionPanels[i] );
@@ -87,8 +96,6 @@ myAPP.init = function () {
 window.onload = function () {
     myAPP.init();
 };
-
-
 
 /* ------------------------------------------------
 
