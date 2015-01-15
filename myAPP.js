@@ -6,10 +6,15 @@ See the README.md for more info
 @Author: Ben Bowes - bb@benbowes.com
 */
 
-myAPP.Accordion = function ( panelSelectorsObj, makeAccessible ) { // e.g. function (".panel")
+myAPP.Accordion = function ( panelSelectorsObj ) { // e.g. function ({ panel: <String>, heading: <String>, content: <String>})
+    
     this.panels = []; // Master list of collapsable panels. Accessible publically e.g myAPP.accordionContainer.panels[0].select();
     this.panelSelectors = panelSelectorsObj; // an obj containing the panel selectors - { panel: <String>, heading: <String>, content: <String>}
-    this.makeAccessible = makeAccessible != false; // true|false
+    this.accordionPanels = document.querySelectorAll( this.panelSelectors['heading'] ); 
+
+    for (i = 0; i < this.accordionPanels.length; i++) {
+        this.makePanel( this.accordionPanels[i], i );
+    }
 };
 
 myAPP.Accordion.prototype = {
@@ -20,20 +25,25 @@ myAPP.Accordion.prototype = {
             v.unselect();
         });
     },
-    // makePanel( <HTMLElement> ) - Spawns a new AccordionPanel and pushes it into the master list of AccordionPanels controlled by Accordian
-    makePanel: function ( panelElement ) {
-        var panel = new myAPP.AccordionPanel( panelElement, this );
+    // makePanel( <HTMLElement>, <position index used for naming> ) - Spawns a new AccordionPanel and pushes it into the master list of AccordionPanels controlled by Accordian
+    makePanel: function ( panelElement, index ) {
+        var panel = new myAPP.AccordionPanel( panelElement, this, index );
         this.panels.push( panel );
     }
 };
 
-myAPP.AccordionPanel = function ( el, panelHolder ) {
+myAPP.AccordionPanel = function ( el, panelHolder, index ) {
     // The AccordionPanel Class controls each of the collapsable panels spawned from Accordion Class
     var self = this;
 
-    this.el = el;
-    this.isSelected = false;
     this.panelHolder = panelHolder;
+    this.index = index;
+    this.el = el;
+    //this.headingEl = el.querySelector( this.panelHolder.panelSelectors['heading'] ); 
+    this.contentEl = el.nextElementSibling;//el.querySelector( this.panelHolder.panelSelectors['content'] ); 
+    this.isSelected = false;
+
+    this.setupAccessibility();
 
     this.el.addEventListener( "click", function () {
         
@@ -52,44 +62,54 @@ myAPP.AccordionPanel = function ( el, panelHolder ) {
 
 myAPP.AccordionPanel.prototype = {
 
+    setupAccessibility: function(){
+        this.el.setAttribute( 'role', 'tab' );
+        this.el.setAttribute( 'id', 'accordionHeading_' + this.index );
+        this.el.setAttribute( 'aria-controls', 'accordionContent_' + this.index );
+        this.el.setAttribute( 'tabindex', '0' );
+        this.el.setAttribute( 'aria-expanded', 'false' ); // dynamic html attribute
+
+        this.contentEl.setAttribute( 'id', 'accordionContent_' + this.index );
+        this.contentEl.setAttribute( 'aria-labelledby', 'accordionHeading_' + this.index );
+        this.contentEl.setAttribute( 'role', 'tabpanel' );
+        this.contentEl.setAttribute( 'tabindex', '0' );
+        this.contentEl.setAttribute( 'aria-hidden', 'true' ); // dynamic html attribute
+    },
     select: function () {
-        this.el.addClass('active');
+        var self = this;
         this.isSelected = true;
+
+        this.el.addClass('active');
+        this.el.setAttribute( 'aria-expanded', 'true' );
+
+        this.contentEl.addClass('active');
+        this.contentEl.setAttribute( 'aria-hidden', 'false' );
+        setTimeout(function(){
+            self.contentEl.focus();
+        }, 1000); // wait for animation to finish
+        
     },
     unselect: function () {
-        this.el.removeClass('active');
         this.isSelected = false;
+
+        this.el.removeClass('active');
+        this.el.setAttribute( 'aria-expanded', 'false' );
+
+        this.contentEl.removeClass('active');    
+        this.contentEl.setAttribute( 'aria-hidden', 'true' );
     }
 };
-
-myAPP.AccordianPanelAccesibility = function () {
-
-}
-
-myAPP.AccordianPanelAccesibility.prototype = {
-
-}
 
 myAPP.init = function () {
 
     // Create Accordian instance and turn all elements with class '.accordion-panel' into AccordianPanel Class intances. 
-    var accordionPanels,
-        i,
-        self = this;
-
     this.accordionContainer = new myAPP.Accordion({
         panel:      '.accordion-panel',
         heading:    '.accordion-panel__heading',
         content:    '.accordion-panel__content'
-    }, true); //  store the panel selectors in Accordian Class - Accordion( { panel: <String>, heading: <String>, content: <String>}, makeAccessible<Boolean> )
+    }); //  store the panel selectors in Accordian Class - Accordion( { panel: <String>, heading: <String>, content: <String>} )
 
-    accordionPanels = document.querySelectorAll( this.accordionContainer.panelSelectors['panel'] ); 
-
-    for (i = 0; i < accordionPanels.length; i++) {
-        self.accordionContainer.makePanel( accordionPanels[i] );
-    }
-
-    // select second panel
+    // Select second panel
     this.accordionContainer.panels[1].select(); // or myAPP.accordionContainer.panels[0].select();
 };
 

@@ -5,6 +5,7 @@ ul{	margin: 0;padding: 0 0 0 20px;}
 p{margin: 0 0 10px 0;}
 .text-right { text-align:right;}
 .text-center { text-align:center;}
+h4{margin: 0 0 10px;}
 
 /* ---------------------------------
 
@@ -17,15 +18,9 @@ p{margin: 0 0 10px 0;}
 	overflow: hidden;
 	border: 3px solid #6495ED;
 }
-.accordion-panel{
-	border: 0px #6495ED solid;
-	transition: all .6s .2s ease; 
-}
-.accordion-panel.active{
-	transition: all .2s .6s;
-	border-left: 15px #6495ED solid;
-}
+
 .accordion-panel__heading{
+	position: relative;
 	padding: 20px;
 	display: block;
 	text-decoration: none;
@@ -40,26 +35,59 @@ p{margin: 0 0 10px 0;}
 	transition: all .6s;
 	cursor:pointer;
 }
+.accordion-panel__heading:before{
+	transition: all .6s .2s ease;
+	content: "";
+	border: 0px #6495ED solid;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+}
+.accordion-panel__heading.active:before{
+	transition: all .2s .6s;
+	border-left: 15px #6495ED solid;
+}
 .accordion-panel__heading:HOVER{
 	color: #333;
 	background: #f1f1f1;
 	transition: all .2s;
 }
-.active .accordion-panel__heading:HOVER,
-.active .accordion-panel__heading{
+.accordion-panel__heading.active:HOVER,
+.accordion-panel__heading.active {
+	transition: all .2s;
 	color: #333;
 	background: #fff;
 	border-bottom: 0;
+	padding: 20px 20px 10px 40px;
 }
 .accordion-panel__content{
+	transition: all .6s;
+	position: relative;
 	padding: 0 20px 0 20px;
 	background: #f1f1f1;
     max-height: 0;
     overflow: hidden;
-    transition: all .6s;
 }
-.active .accordion-panel__content{
+.accordion-panel__content:before{
+	transition: all .6s .2s ease;
+	content: "";
+	border: 0px #6495ED solid;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+}
+.accordion-panel__content.active:before{
+	transition: all .2s .6s;
+	border-left: 15px #6495ED solid;
+}
+.accordion-panel__content.active {
+	transition: all .2s;
+	
     max-height: 500px;
-    padding: 0 20px 20px 20px;
     background: #fff;
+   padding: 10px 20px 15px 40px;
 }
