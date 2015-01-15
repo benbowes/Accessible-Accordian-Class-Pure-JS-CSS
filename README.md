@@ -1,4 +1,4 @@
-# Simple-Accordion-Class-Pure-JS
+# Accessible Accordian Class Pure JS / CSS
 
 A pure JS OOP accessible accordion with CSS transitions.
 
@@ -47,7 +47,7 @@ HTML Layout:
 
 Rough HTML translation:
 ```
-Accordion
+Accordion Container
 
     AccordionPanel's clickable heading/tab - controls content area
     AccordionPanel's collapsing content area
