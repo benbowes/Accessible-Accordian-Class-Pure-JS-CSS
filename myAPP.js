@@ -64,6 +64,7 @@ myAPP.AccordionPanel.prototype = {
 
     setupAccessibility: function(){
         this.el.setAttribute( 'role', 'tab' );
+        this.el.setAttribute( 'aria-selected', 'false' );
         this.el.setAttribute( 'id', 'accordionHeading_' + this.index );
         this.el.setAttribute( 'aria-controls', 'accordionContent_' + this.index );
         this.el.setAttribute( 'tabindex', '0' );
@@ -81,12 +82,13 @@ myAPP.AccordionPanel.prototype = {
 
         this.el.addClass('active');
         this.el.setAttribute( 'aria-expanded', 'true' );
+        this.el.setAttribute( 'aria-selected', 'true' );
 
         this.contentEl.addClass('active');
         this.contentEl.setAttribute( 'aria-hidden', 'false' );
         setTimeout(function(){
             self.contentEl.focus();
-        }, 1000); // wait for animation to finish
+        }, 1000); // wait for animation to finish before shifting focus (Don't need to - just looks nicer)
         
     },
     unselect: function () {
@@ -94,6 +96,7 @@ myAPP.AccordionPanel.prototype = {
 
         this.el.removeClass('active');
         this.el.setAttribute( 'aria-expanded', 'false' );
+        this.el.setAttribute( 'aria-selected', 'false' );
 
         this.contentEl.removeClass('active');    
         this.contentEl.setAttribute( 'aria-hidden', 'true' );
