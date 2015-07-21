@@ -70,3 +70,20 @@ myAPP.init = function () {
     this.accordionContainer.panels[1].select(); // or myAPP.accordionContainer.panels[0].select();
 };
 ```
+
+Removing the focus ring
+====
+
+If you'd like to remove the focus ring from the accordian (and whole page), I can provide 2 options. Note that this is considered a bad practice by some accessibilty professionals however note that VoiceOver, NVDA and Chromevox screenreaders add their own focus ring.
+
+A CSS version:
+```
+:focus{
+  outline: 0;
+}
+```
+
+And a keyboard initiated version as stated here: http://www.paciellogroup.com/blog/2012/04/how-to-remove-css-outlines-in-an-accessible-manner/
+
+The keyboard version essentially adds the above CSS on mouseclick and removes the CSS on keyup.
+
