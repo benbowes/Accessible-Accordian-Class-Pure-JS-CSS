@@ -7,9 +7,14 @@ p{margin: 0 0 10px 0;}
 .text-center { text-align:center;}
 h4{margin: 0 0 10px;}
 
+/* Remove focus ring as all screen readers tested on add their own focus ring */
+:focus{
+  outline: 0;
+}
+
 /* ---------------------------------
 
-		A C C O R D I A N      
+		A C C O R D I A N
 
 --------------------------------- */
 
@@ -17,6 +22,7 @@ h4{margin: 0 0 10px;}
 	border-radius: 3px;
 	overflow: hidden;
 	border: 3px solid #6495ED;
+	max-width: 350px;
 }
 
 .accordion-panel__heading{
@@ -32,11 +38,11 @@ h4{margin: 0 0 10px;}
 	font-size: 12px;
 	font-weight: 600;
 	border-bottom: 1px solid #6495ED;
-	transition: all .6s;
+	transition: all .2s;
 	cursor:pointer;
 }
 .accordion-panel__heading:before{
-	transition: all .6s .2s ease;
+	transition: all .2s ease;
 	content: "";
 	border: 0px #6495ED solid;
 	position: absolute;
@@ -46,7 +52,7 @@ h4{margin: 0 0 10px;}
 	height: 100%;
 }
 .accordion-panel__heading.active:before{
-	transition: all .2s .6s;
+	transition: all .2s .2s;
 	border-left: 15px #6495ED solid;
 }
 .accordion-panel__heading:HOVER{
@@ -63,7 +69,7 @@ h4{margin: 0 0 10px;}
 	padding: 20px 20px 20px 40px;
 }
 .accordion-panel__content{
-	transition: all .6s;
+	transition: all .2s;
 	position: relative;
 	padding: 0 20px 0 20px;
 	background: #f1f1f1;
@@ -71,7 +77,7 @@ h4{margin: 0 0 10px;}
     overflow: hidden;
 }
 .accordion-panel__content:before{
-	transition: all .6s .2s ease;
+	transition: all .2s ease;
 	content: "";
 	border: 0px #6495ED solid;
 	position: absolute;
@@ -81,12 +87,12 @@ h4{margin: 0 0 10px;}
 	height: 100%;
 }
 .accordion-panel__content.active:before{
-	transition: all .2s .6s;
+	transition: all .2s .2s;
 	border-left: 15px #6495ED solid;
 }
 .accordion-panel__content.active {
 	transition: all .2s;
-	
+
     max-height: 500px;
     background: #fff;
    padding: 10px 20px 15px 40px;
