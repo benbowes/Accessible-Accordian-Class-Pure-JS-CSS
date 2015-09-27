@@ -7,7 +7,7 @@ p{margin: 0 0 10px 0;}
 .text-center { text-align:center;}
 h4{margin: 0 0 10px;}
 
-/* Remove focus ring as all screen readers tested on add their own focus ring */
+/* Remove focus ring as all screen readers tested on, add their own focus ring */
 :focus{
   outline: 0;
 }
