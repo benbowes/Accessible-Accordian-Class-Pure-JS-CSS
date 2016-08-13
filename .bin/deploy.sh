@@ -7,10 +7,10 @@ else echo "Deploy in progress...";
 fi
 
 # Copy other files into dist/
-cp index.html myAPP.js style.css dist
+cp index.html myApp.js style.css dist
 
 # git add new dist/ assets
-git add dist/myAPP.js dist/index.html dist/style.css
+git add dist/myApp.js dist/index.html dist/style.css
 
 # Commit dist/ changes
 git commit -m "Deploy to gh-pages..."
