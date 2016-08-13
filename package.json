@@ -1,0 +1,20 @@
+{
+  "name": "accessible-accordian-class-pure-js-css",
+  "version": "0.0.0",
+  "description": "Accessible Accordian Class Pure JS CSS",
+  "main": "myAPP.js",
+  "scripts": {
+    "deploy": ".bin/deploy.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://benbowes@github.com/benbowes/Accessible-Accordian-Class-Pure-JS-CSS.git"
+  },
+  "author": "Ben Bowes <bb@benbowes.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benbowes/Accessible-Accordian-Class-Pure-JS-CSS/issues"
+  },
+  "homepage": "https://github.com/benbowes/Accessible-Accordian-Class-Pure-JS-CSS#readme"
+}
