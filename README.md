@@ -2,7 +2,7 @@
 
 A pure JS OOP accessible accordion with CSS transitions.
 
-View a demo here: http://polyform.com.au/Accessible-Accordian-Class-Pure-JS-CSS/
+View a demo here: http://benbowes.github.io/Accessible-Accordian-Class-Pure-JS-CSS/
 
 -------
 
@@ -15,7 +15,7 @@ Accordian rules:
 - Transitions work in IE10+ and modern browsers
 
 Accessibilty:
-- It is based on this accordian: http://www.oaa-accessibility.org/examplep/accordian1/ 
+- It is based on this accordian: http://www.oaa-accessibility.org/examplep/accordian1/
     which is mentioned here: http://www.w3.org/TR/wai-aria-practices/#accordion, I have not implemented the keyboard interaction.
 - Uses/Sets landmark roles [tablist, tab, tabpanel] for the accordion relationships
 - Sets focus to the tab panel when heading 'tab' is clicked
@@ -37,7 +37,7 @@ HTML Layout:
         ...
     </div>
 
-    
+
 </section>
 ```
 -----------------------------------
@@ -60,7 +60,7 @@ Initialisation
 ```
 myAPP.init = function () {
 
-    // Create Accordian instance. Pass in the classes you want to use for the heading and content panel. 
+    // Create Accordian instance. Pass in the classes you want to use for the heading and content panel.
     this.accordionContainer = new myAPP.Accordion({
         heading:    '.accordion-panel__heading',
         content:    '.accordion-panel__content'
@@ -86,4 +86,3 @@ A CSS version:
 And a keyboard initiated version as stated here: http://www.paciellogroup.com/blog/2012/04/how-to-remove-css-outlines-in-an-accessible-manner/
 
 The keyboard version essentially adds the above CSS on mouseclick and removes the CSS on keyup.
-
