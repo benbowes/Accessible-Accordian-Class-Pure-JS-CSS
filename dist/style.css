@@ -59,7 +59,7 @@ h4{margin: 0 0 10px;}
 }
 .accordion-panel__heading.active:before{
 	transition: all .2s;
-	border-left: 15px #6495ED solid;
+	border-left: 8px #6495ED solid;
 }
 .accordion-panel__heading:HOVER{
 	color: #333;
@@ -72,7 +72,7 @@ h4{margin: 0 0 10px;}
   color: #333;
   background: #fff;
   border-bottom: 0;
-  padding: 20px 20px 20px 40px;
+  padding: 20px 20px 20px 30px;
 }
 .accordion-panel__content{
   transition: all .2s;
@@ -94,11 +94,11 @@ h4{margin: 0 0 10px;}
 }
 .accordion-panel__content.active:before{
   transition: all .2s;
-  border-left: 15px #6495ED solid;
+  border-left: 8px #6495ED solid;
 }
 .accordion-panel__content.active {
   transition: all .2s;
   max-height: 500px;
   background: #fff;
-  padding: 10px 20px 15px 40px;
+  padding: 10px 20px 15px 30px;
 }
