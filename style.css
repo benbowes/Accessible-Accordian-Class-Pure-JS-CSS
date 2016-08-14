@@ -28,7 +28,7 @@ h4{margin: 0 0 10px;}
 .accordion{
 	border-radius: 3px;
 	overflow: hidden;
-	border: 4px solid #6495ED;
+	border: 1px solid #6495ED;
 	max-width: 350px;
 }
 
