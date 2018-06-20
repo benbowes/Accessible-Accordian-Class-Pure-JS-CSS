@@ -1,6 +1,6 @@
 {
   "name": "accessible-accordian-class-pure-js-css",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Accessible Accordian Class Pure JS CSS",
   "main": "myAPP.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "url": "git+https://benbowes@github.com/benbowes/Accessible-Accordian-Class-Pure-JS-CSS.git"
   },
   "author": "Ben Bowes <bb@benbowes.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/benbowes/Accessible-Accordian-Class-Pure-JS-CSS/issues"
   },
