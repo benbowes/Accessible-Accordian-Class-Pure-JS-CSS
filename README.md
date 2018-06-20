@@ -6,7 +6,7 @@ View a demo here: http://benbowes.github.io/Accessible-Accordian-Class-Pure-JS-C
 
 -------
 
-Works in IE9+
+Works in IE10+
 
 Accordian rules:
 - Panels open and close via a click event on a tab heading.
